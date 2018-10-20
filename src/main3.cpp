@@ -50,14 +50,19 @@ unsigned long long nextPrime(unsigned long long value){
     return i;
 
 }
-unsigned long long sumPrime(unsigned int hbound){
-    unsigned int m = 2;
-    unsigned long long s=2;
-    while(m<hbound){
-        m=nextPrime(m);
-        s=s+m;
-    }
-    s=s-m;
-    return s;
 
+//Sieve of Eratosthenes
+unsigned long long sumPrime(unsigned int hbound) {
+    bool *fl = new bool[hbound]{false};
+    unsigned long long int sum = 0;
+    unsigned long long int i = 2;
+    while (i < hbound) {
+        if (!fl[i]) {
+            sum += i;
+            for (unsigned long long int j=i; j < (hbound); j += i)
+                fl[j] = true;
+        }
+        i++;
+    }
+    return sum;
 }
