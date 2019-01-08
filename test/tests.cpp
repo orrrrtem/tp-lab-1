@@ -5,10 +5,10 @@
 TEST(lab4,scene1)
 {
     Automata nc;
-  
+    nc.on();
+
     
     nc.coin(10);
-    int c = 10;
-    EXPECT_EQ(c,nc.getcash());
-    
+    int c = nc.getcash();
+    EXPECT_EQ(10,c);
 }
